@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name = "occupancy_grid_name" default = "office3" />
+    <arg name = "contour_file_name" default = "$(arg occupancy_grid_name).dat" />
+    <arg name = "gazebo_world_name" default = "$(arg occupancy_grid_name).world" />
+        <param name="occupancy_grid_name" type="string" value="$(find octomap_to_gazebo)/maps/$(arg occupancy_grid_name)"/>
+        <param name="contour_file" type="string" value="$(find octomap_to_gazebo)/contour_files/$(arg contour_file_name)"/>
+        <param name="gazebo_world_file" type="string" value="$(find octomap_to_gazebo)/gazebo_worlds/$(arg gazebo_world_name)"/>
+    <node name="generate_world_and_contours" pkg="octomap_to_gazebo" type="generate_world_and_contours.py" output="screen" />
+</launch>
